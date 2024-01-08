@@ -290,4 +290,7 @@ if __name__ == "__main__":
     controller = AttentionReweight(prompts, NUM_DIFFUSION_STEPS, cross_replace_steps=.8,
                                 self_replace_steps=.4,
                                 equalizer=equalizer)
-    _ = run_and_display(prompts, controller, latent=None, run_baseline=False)
+    images, _ = run_and_display(prompts, controller, latent=None, run_baseline=False)
+    
+    for i, image in enumerate(images):
+        Image.fromarray(image).save(f"generated_{i}.png")
